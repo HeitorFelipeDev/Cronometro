@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cronômetro | PWA</title>
+
+    <!-- link-favicon -->
+    <link rel="icon" href="assets/images/img_pwa.png" type="image/x-icon">
+
+    <!-- link-css -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- link-fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- script-js -->
+    <script src="assets/js/script.js" defer></script>
+
+</head>
+
+<body>
+    <section id="cronometro">
+        <section class="cronometro-container">
+            <div class="tempo-container">
+                <span id="tempo">00:00.00</span>
+            </div>
+            <div class="controles">
+                <button id="button-iniciar" class="controle">
+                    <i class="fa fa-play" aria-hidden="true"></i>
+                </button>
+                <button id="button-pause" class="controle d-none">
+                    <i class="fa fa-pause" aria-hidden="true"></i>
+                </button>
+                <button id="button-resume" class="controle d-none">
+                    <i class="fa fa-play" aria-hidden="true"></i>
+                </button>
+                <button id="button-reiniciar" class="controle d-none">
+                    <i class="fa fa-stop" aria-hidden="true"></i>
+                </button>
+            </div>
+
+            <div class="dark-mode-container">
+                <span>Modo-escuro</span>
+                <div class="dark-mode-wrapper">
+                    <input type="checkbox" id="toggle" />
+                    <label for="toggle" id="button-dark-mode"></label>
+                </div>
+            </div>
+
+            <p class="creditos">Feito com <i class="fa fa-heart" aria-hidden="true"></i> por @HeitorFelipe</p>
+        </section>
+
+        <section id="tempo-espera">
+            <span id="text-tempo-espera">3</span>
+        </section>
+    </section>
+</body>
+
+</html>

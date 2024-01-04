@@ -1,0 +1,306 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;800&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+    transition: all .2s;
+    transition: width none;
+    font-family: Arial, sans-serif;
+}
+
+:root {
+    --bg-color-light: #ffffff;
+    --text-color-light: #000000;
+
+    --bg-color-dark: #000000;
+    --text-color-dark: #ffffff;
+
+    --bg-color-light-l: #e4e4e4;
+    --bg-color-dark-l: #222222;
+
+    --weight-500: 500;
+    --weight-600: 600;
+    --weight-700: 700;
+    --weight-800: 800;
+
+    --box-shadow-bottom: 0 0.1rem 1rem rgba(0, 0, 0, .5);
+    --box-shadow: 0 0 .5rem rgba(0, 0, 0, .5);
+
+    --fs-1: 1rem;
+    --fs-2: 1.4rem;
+    --fs-3: 1.7rem;
+    --fs-4: 2rem;
+    --fs-5: 3rem;
+
+    --border-radius: .3rem;
+    --border: 1px solid var(--bg-color-dark-l);
+
+    --danger: #c91b1b;
+    --warning: #dfab1b;
+    --success: #298d29;
+    --primary: #2727c0;
+    --dark: #000;
+    --light: #fff;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+;
+
+button {
+    background: none;
+    font: inherit;
+    transition: .3s;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4rem;
+}
+
+html::-webkit-scrollbar {
+    width: 10px;
+}
+
+html::-webkit-scrollbar-track {
+    background: rgba(161, 161, 161, 0.933);
+    border-left: 1px solid #c8c8c8;
+}
+
+html::-webkit-scrollbar-thumb {
+    background: #444;
+    transition: .3s ease-in;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+    transition: .3s ease-in-out;
+    background: #222;
+}
+
+body {
+    overflow: hidden;
+
+    background: var(--bg-color-light);
+    color: var(--text-color-light);
+
+    width: 100%;
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body.dark-mode {
+    --bg-color-light: var(--bg-color-dark);
+    --text-color-light: var(--text-color-dark);
+    --bg-color-light-l: var(--bg-color-dark-l);
+}
+
+#cronometro {
+    width: 90%;
+    padding: 2rem 1rem;
+    border-radius: var(--border-radius);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cronometro-container {
+    text-align: center;
+    font-size: var(--fs-3);
+}
+
+.tempo-container {
+    height: 150px;
+    width: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 5px solid var(--bg-color-dark-l);
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+#tempo {
+    font-weight: var(--weight-600);
+    font-size: var(--fs-3);
+}
+
+.controles {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 30px;
+}
+
+.controle {
+    height: 3rem;
+    width: 3rem;
+    padding: 1rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: var(--border-radius);
+
+    background: var(--bg-color-light-l);
+    color: var(--text-color-light);
+
+    transition: .3s ease;
+    font-size: var(--fs-2);
+}
+
+.controle.d-none {
+    display: none;
+}
+
+.controle:hover {
+    cursor: pointer;
+    transition: .3s ease-in;
+}
+
+/* dark-mode */
+.dark-mode-container {
+    font-size: var(--fs-1);
+    display: flex;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.dark-mode-wrapper {
+    height: max-content;
+    display: flex;
+}
+
+input[type="checkbox"] {
+    visibility: hidden;
+}
+
+input[type="checkbox"]:checked+label {
+    background-color: #000;
+}
+
+input[type="checkbox"]:checked+label::before {
+    transform: translateX(25px);
+    background-color: #FFF;
+}
+
+label {
+    display: flex;
+    width: 50px;
+    height: 20px;
+    border: var(--border);
+    border-radius: 99em;
+    position: relative;
+    transition: transform .75s ease-in-out;
+    transform-origin: 50% 50%;
+    cursor: pointer;
+}
+
+label::before {
+    transition: transform .75s ease;
+    transition-delay: .5s;
+    content: "";
+    display: block;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: #000;
+    border-radius: 50%;
+    top: 2px;
+    left: 6px;
+}
+
+#tempo-espera {
+    width: 100%;
+    height: 100%;
+
+    align-items: center;
+    justify-content: center;
+
+    border: var(--border);
+    background: rgba(0, 0, 0, .8);
+
+    color: #fff;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    
+    display: none;
+}
+
+#tempo-espera.active {
+    display: flex;
+}
+
+#tempo-espera.active #text-tempo-espera {
+    animation: number 1s infinite linear forwards;
+}
+
+@keyframes number {
+    0% {
+        opacity: 0;
+        font-size: 1rem;
+    }
+
+    50% {
+        opacity: 0.5;
+        font-size: 15rem;
+    }
+
+    100% {
+        opacity: 1;
+        font-size: 10rem;
+    }
+}
+
+.creditos {
+    font-size: .7rem;
+    margin-top: 30px;
+    color: #a8a8a8;
+}
+
+
+@media screen and (min-width: 320px) {
+    .dark-mode-container{
+        display: flex;
+        justify-content: center;
+    }
+
+    .tempo-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    #tempo{
+        font-size: var(--fs-5);
+    }
+
+    .controle {
+        width: 5rem;
+        height: 5rem;
+    }
+}
+
+@media screen and (min-width: 450px) {
+    #cronometro {
+        width: 400px;
+        border: var(--border);
+        box-shadow: var(--box-shadow);
+    }
+}
